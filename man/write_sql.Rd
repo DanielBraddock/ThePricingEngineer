@@ -9,9 +9,10 @@ write_sql(
   to_conn,
   to_schema,
   to_table,
-  time_stamp = TRUE,
+  time_stamp = FALSE,
   overwrite = TRUE,
-  temporary = FALSE
+  temporary = FALSE,
+  ...
 )
 }
 \arguments{
@@ -21,16 +22,20 @@ write_sql(
 
 \item{to_schema}{the name of the schema to write to eg "this_schema"}
 
-\item{to_table}{the name of the table to write to (needs no datetime stamp) eg "this_table"}
+\item{to_table}{the name of the table to write to eg "this_table" NB a time-stamp is added for you as a suffix if time_stamp = TRUE}
 
-\item{time_stamp}{defaults to TRUE, creating a datetime stamp suffix for you table}
+\item{time_stamp}{defaults to FALSE, creating a datetime stamp suffix for your table}
 
 \item{overwrite}{defaults to TRUE, overwriting any existing table}
 
 \item{temporary}{defaults to FALSE, ensuring the table persists after the sessions ends}
+
+\item{...}{args to pass to copy_to}
 }
 \description{
-This function is called for it's side-effects of writing a local data.frame to SQL
+This function is called for it's side-effects of writing a local data.frame to SQL.
+It is essentially a wrapper around dplyr::copy_to with some messages.
+The messages log the time the table starts being written, finishes, and how long it took.
 }
 \examples{
 \dontrun{write_sql(df, conn, "this_schema", "this_table")}

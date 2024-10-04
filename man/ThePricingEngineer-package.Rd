@@ -8,6 +8,14 @@
 \description{
 Data Engineering, Feature Engineering, Preparing Data for Analysis and Modelling by the teams in the Pricing and Underwriting Department. Initially designed for the Loss Cost Modelling (LCM) team
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/DanielBraddock/ThePricingEngineer}
+  \item Report bugs at \url{https://github.com/DanielBraddock/ThePricingEngineer/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Daniel Braddock \email{daniel_braddock@nfumutual.co.uk} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})
 
