@@ -4,12 +4,12 @@
 \alias{table_name}
 \title{Get prettified table name from conn (DBI::dbConnect) and Id (DBI::Id)}
 \usage{
-table_name(conn, Id, full_name = TRUE)
+table_name(Id, conn = connect_nfu(), full_name = TRUE)
 }
 \arguments{
-\item{conn}{the output of DBI::dbConnect giving the server and db}
-
 \item{Id}{the output of DBI::Id containing the schema and table name}
+
+\item{conn}{the output of DBI::dbConnect giving the server and db}
 
 \item{full_name}{Defaults to TRUE meaning server and db is also given}
 }
