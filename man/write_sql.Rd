@@ -6,9 +6,9 @@
 \usage{
 write_sql(
   df,
-  to_conn,
   to_schema,
   to_table,
+  to_conn = connect_nfu(),
   time_stamp = FALSE,
   overwrite = TRUE,
   temporary = FALSE,
@@ -16,21 +16,21 @@ write_sql(
 )
 }
 \arguments{
-\item{df}{the local data.frame to write to SQL}
+\item{df}{the local data.frame to write to SQL.}
 
-\item{to_conn}{a remote data source, eg SQL server + database created from DBI::dbConnect}
+\item{to_schema}{the name of the schema to write to eg "this_schema".}
 
-\item{to_schema}{the name of the schema to write to eg "this_schema"}
+\item{to_table}{the name of the table to write to eg "this_table" NB a time-stamp is added for you as a suffix if time_stamp = TRUE.}
 
-\item{to_table}{the name of the table to write to eg "this_table" NB a time-stamp is added for you as a suffix if time_stamp = TRUE}
+\item{to_conn}{a remote data source, eg SQL server + database created from DBI::dbConnect. Calls connect_nfu() by default.}
 
-\item{time_stamp}{defaults to FALSE, creating a datetime stamp suffix for your table}
+\item{time_stamp}{defaults to FALSE, creating a datetime stamp suffix for your table.}
 
-\item{overwrite}{defaults to TRUE, overwriting any existing table}
+\item{overwrite}{defaults to TRUE, overwriting any existing table.}
 
-\item{temporary}{defaults to FALSE, ensuring the table persists after the sessions ends}
+\item{temporary}{defaults to FALSE, ensuring the table persists after the sessions ends.}
 
-\item{...}{args to pass to copy_to}
+\item{...}{args to pass to copy_to.}
 }
 \description{
 This function is called for it's side-effects of writing a local data.frame to SQL.

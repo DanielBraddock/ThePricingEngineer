@@ -4,20 +4,20 @@
 #' It is essentially a wrapper around dplyr::copy_to with some messages.
 #' The messages log the time the table starts being written, finishes, and how long it took.
 #'
-#' @param df the local data.frame to write to SQL
-#' @param to_conn a remote data source, eg SQL server + database created from DBI::dbConnect
-#' @param to_schema the name of the schema to write to eg "this_schema"
-#' @param to_table the name of the table to write to eg "this_table" NB a time-stamp is added for you as a suffix if time_stamp = TRUE
-#' @param time_stamp defaults to FALSE, creating a datetime stamp suffix for your table
-#' @param overwrite defaults to TRUE, overwriting any existing table
-#' @param temporary defaults to FALSE, ensuring the table persists after the sessions ends
-#' @param ... args to pass to copy_to
+#' @param df the local data.frame to write to SQL. 
+#' @param to_schema the name of the schema to write to eg "this_schema". 
+#' @param to_table the name of the table to write to eg "this_table" NB a time-stamp is added for you as a suffix if time_stamp = TRUE. 
+#' @param to_conn a remote data source, eg SQL server + database created from DBI::dbConnect. Calls connect_nfu() by default. 
+#' @param time_stamp defaults to FALSE, creating a datetime stamp suffix for your table. 
+#' @param overwrite defaults to TRUE, overwriting any existing table. 
+#' @param temporary defaults to FALSE, ensuring the table persists after the sessions ends. 
+#' @param ... args to pass to copy_to. 
 #'
 #' @return NULL
 #' @export
 #'
 #' @examples \dontrun{write_sql(df, conn, "this_schema", "this_table")}
-write_sql <- function(df, to_conn, to_schema, to_table, time_stamp = FALSE, overwrite = TRUE, temporary = FALSE, ...) {
+write_sql <- function(df, to_schema, to_table, to_conn = connect_nfu(), time_stamp = FALSE, overwrite = TRUE, temporary = FALSE, ...) {
   
   # to pass to messages and use in copy_to
   to_table_final <- if (time_stamp) paste0(to_table, "_", as_yyyymmdd_hhmmss(t0)) else to_table
