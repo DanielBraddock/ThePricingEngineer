@@ -2,6 +2,7 @@
 
 export(as_yyyymmdd_hhmmss)
 export(connect_nfu)
+export(scrape_aadf)
 export(write_sql)
 import(rlang)
 importFrom(DBI,Id)

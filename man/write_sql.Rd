@@ -38,5 +38,8 @@ It is essentially a wrapper around dplyr::copy_to with some messages.
 The messages log the time the table starts being written, finishes, and how long it took.
 }
 \examples{
-\dontrun{write_sql(df, conn, "this_schema", "this_table")}
+\dontrun{
+df |> write_sql("this_schema", "this_table")
+df |> write_sql("this_schema", "this_table", to_conn = conn)
+}
 }

@@ -11,10 +11,12 @@ scrape_aadf(raw_counts = FALSE)
 If set to TRUE, then it scrapes "dft_traffic_counts_raw_counts" instead.}
 }
 \value{
-A tibble
+A tibble containing the aadf (or raw_counts) data
 }
 \description{
-Scrape the latest AADF data from the government website
+Uses rvest to scrape the data location and httr2 to perform a request.
+This saves a .zip file containing the dataset in a .csv file to a temp dir.
+This data is then read in and returned.
 }
 \examples{
 \dontrun{
