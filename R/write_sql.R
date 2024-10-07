@@ -24,7 +24,7 @@ write_sql <- function(df, to_schema, to_table, to_conn = connect_nfu(), time_sta
   id_table <- DBI::Id(to_schema, to_table_final)
 
   # log
-  message(paste0("Table saving to ", table_name(to_conn, id_table)))
+  message(paste0("Table saving to ", table_name(conn = to_conn, Id = id_table)))
   t0 <- Sys.time()
   message(paste0(as_yyyymmdd_hhmmss(t0), ": start writing table"))
   
@@ -44,7 +44,7 @@ write_sql <- function(df, to_schema, to_table, to_conn = connect_nfu(), time_sta
   message(paste0(as_yyyymmdd_hhmmss(t1), ": end writing table"))
   d_write <- (t1 - t0) |> as.numeric(units = "mins") |> round(2)
   message(paste0(d_write, " minutes taken to write table\n"))
-  message(paste0("Table saved to ", table_name(to_conn, id_table)))
+  message(paste0("Table saved to ", table_name(conn = to_conn, Id = id_table)))
   message("================================================================")
   
   return(NULL)
