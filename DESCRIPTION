@@ -13,9 +13,13 @@ Imports:
     DBI,
     dplyr,
     glue,
+    httr2,
     lifecycle,
     odbc,
+    purrr,
+    readr,
     rlang,
+    rvest,
     stringr,
     withr
 Suggests: 
