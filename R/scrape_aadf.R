@@ -25,14 +25,13 @@ scrape_aadf <- function(raw_counts = FALSE) {
   destfile <- tempfile(fileext = ".zip")
   destdir <- destfile |> 
     stringr::str_split_1("\\\\") |> 
-    purrr::discard(\(x) x |> stringr::str_detect("\\.zip")) |> 
-    stringr::str_c(collapse = "\\")
+    head(-1) |> 
+    stringr::str_flatten("\\")
   
   # define the target filename to be extracted from the zip file
   filename <- paste0("dft_traffic_counts_", aadf_or_raw_counts, ".csv")
   
   # download zip file to temporary location
-  # maybe it should be https://roadtraffic.dft.gov.uk/downloads?
   "https://roadtraffic.dft.gov.uk/downloads" |> 
     rvest::read_html() |> 
     rvest::html_nodes("a") |> 
