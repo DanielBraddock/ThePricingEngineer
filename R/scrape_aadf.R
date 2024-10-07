@@ -33,7 +33,7 @@ scrape_aadf <- function(raw_counts = FALSE) {
   
   # download zip file to temporary location
   # maybe it should be https://roadtraffic.dft.gov.uk/downloads?
-  "https://www.data.gov.uk/dataset/208c0e7b-353f-4e2d-8b7a-1a7118467acc/gb-road-traffic-counts" |> 
+  "https://roadtraffic.dft.gov.uk/downloads" |> 
     rvest::read_html() |> 
     rvest::html_nodes("a") |> 
     rvest::html_attr("href") |> 
