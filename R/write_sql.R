@@ -16,7 +16,10 @@
 #' @return NULL
 #' @export
 #'
-#' @examples \dontrun{write_sql(df, conn, "this_schema", "this_table")}
+#' @examples \dontrun{
+#' df |> write_sql("this_schema", "this_table")
+#' df |> write_sql("this_schema", "this_table", to_conn = conn)
+#' }
 write_sql <- function(df, to_schema, to_table, to_conn = connect_nfu(), time_stamp = FALSE, overwrite = TRUE, temporary = FALSE, ...) {
   
   # to pass to messages and use in copy_to
