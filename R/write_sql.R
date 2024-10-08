@@ -22,13 +22,11 @@
 #' }
 write_sql <- function(df, to_schema, to_table, to_conn = connect_nfu(), time_stamp = FALSE, overwrite = TRUE, temporary = FALSE, ...) {
   
-  # to pass to messages and use in copy_to
+  # log
+  t0 <- Sys.time()
   to_table_final <- if (time_stamp) paste0(to_table, "_", as_yyyymmdd_hhmmss(t0)) else to_table
   id_table <- DBI::Id(to_schema, to_table_final)
-
-  # log
   message(paste0("Table saving to ", table_name(conn = to_conn, Id = id_table)))
-  t0 <- Sys.time()
   message(paste0(as_yyyymmdd_hhmmss(t0), ": start writing table"))
   
   # write to SQL
