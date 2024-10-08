@@ -41,6 +41,9 @@ scrape_road_safety_data <- function(year = NULL, vehicle = FALSE) {
   
   df <- readr::read_csv(path)
   
+  # because SQL doesn't want cols of type <time>
+  if (!vehicle) df <- df |> dplyr::mutate(time = time |> as.character())
+  
   return(df)
   
 }
