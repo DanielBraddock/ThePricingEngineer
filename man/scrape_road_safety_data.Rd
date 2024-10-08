@@ -7,7 +7,7 @@
 scrape_road_safety_data(year = NULL, vehicle = FALSE)
 }
 \arguments{
-\item{year}{}
+\item{year}{The year of data to return. By default, NULL, the most recent year available.}
 
 \item{vehicle}{If TRUE, then this scrapes "dft-road-casualty-statistics-vehicle" data
 instead of "dft-road-casualty-statistics-collision" data. By default it is FALSE.}

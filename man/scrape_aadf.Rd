@@ -4,9 +4,11 @@
 \alias{scrape_aadf}
 \title{Scrape the latest AADF data from the government website}
 \usage{
-scrape_aadf(raw_counts = FALSE)
+scrape_aadf(year = NULL, raw_counts = FALSE)
 }
 \arguments{
+\item{year}{The year of data to return. By default, NULL, the most recent accident year available.}
+
 \item{raw_counts}{By default, FALSE, which means it scrapes "dft_traffic_counts_aadf".
 If set to TRUE, then it scrapes "dft_traffic_counts_raw_counts" instead.}
 }

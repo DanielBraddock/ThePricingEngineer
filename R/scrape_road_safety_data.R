@@ -4,7 +4,7 @@
 #' Also associated with (not sure exactly what the relationship is) the term "Stats19". 
 #' This is data on traffic collisions. 
 #'
-#' @param year 
+#' @param year The year of data to return. By default, NULL, the most recent year available. 
 #' @param vehicle If TRUE, then this scrapes "dft-road-casualty-statistics-vehicle" data 
 #' instead of "dft-road-casualty-statistics-collision" data. By default it is FALSE. 
 #'

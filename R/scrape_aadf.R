@@ -5,6 +5,7 @@
 #' This saves a .zip file containing the dataset in a .csv file to a temp dir. 
 #' This data is then read in and returned. 
 #' 
+#' @param year The year of data to return. By default, NULL, the most recent accident year available. 
 #' @param raw_counts By default, FALSE, which means it scrapes "dft_traffic_counts_aadf". 
 #' If set to TRUE, then it scrapes "dft_traffic_counts_raw_counts" instead. 
 #'
@@ -16,7 +17,12 @@
 #' aadf <- scrape_aadf()
 #' aadf <- scrape_aadf(raw_counts = TRUE)
 #' }
-scrape_aadf <- function(raw_counts = FALSE) {
+scrape_aadf <- function(year = NULL, raw_counts = FALSE) {
+  
+  stopifnot(is.null(year) | is.numeric(year))
+  
+  # avoid name clashes
+  latest_year = year
   
   # there are two datasets we might want: aadf and raw_counts
   aadf_or_raw_counts <- if (raw_counts) "raw_counts" else "aadf"
@@ -45,6 +51,13 @@ scrape_aadf <- function(raw_counts = FALSE) {
   
   # read in the csv
   df <- readr::read_csv(file.path(destdir, filename))
+  
+  # filter to year (by default, year = NULL gives the most recent year)
+  df <- if (is.null(latest_year)) {
+    df |> dplyr::filter(.data[["year"]] == max(.data[["year"]], na.rm = TRUE))
+  } else {
+    df |> dplyr::filter(.data[["year"]] == latest_year)
+  }
   
   return(df)
   

@@ -5,6 +5,8 @@
 #' @import rlang
 #' @importFrom DBI Id
 #' @importFrom dplyr copy_to
+#' @importFrom dplyr filter
+#' @importFrom dplyr pull
 #' @importFrom glue glue
 #' @importFrom httr2 request
 #' @importFrom httr2 req_perform
