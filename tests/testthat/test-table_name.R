@@ -1,3 +1,3 @@
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+test_that("table_name works", {
+  expect_no_error(table_name(DBI::Id("information_schema", "tables")))
 })

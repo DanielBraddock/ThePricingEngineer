@@ -6,8 +6,7 @@
 \usage{
 write_sql(
   df,
-  to_schema,
-  to_table,
+  name,
   to_conn = connect_nfu(),
   time_stamp = FALSE,
   overwrite = TRUE,
@@ -16,11 +15,9 @@ write_sql(
 )
 }
 \arguments{
-\item{df}{the local data.frame to write to SQL.}
+\item{df}{data.frame to write to SQL.}
 
-\item{to_schema}{the name of the schema to write to eg "this_schema".}
-
-\item{to_table}{the name of the table to write to eg "this_table" NB a time-stamp is added for you as a suffix if time_stamp = TRUE.}
+\item{name}{table to write in the format "my_schema.my_table" (if time_stamp = TRUE, suffix added, see details)}
 
 \item{to_conn}{a remote data source, eg SQL server + database created from DBI::dbConnect. Calls connect_nfu() by default.}
 
@@ -30,12 +27,16 @@ write_sql(
 
 \item{temporary}{defaults to FALSE, ensuring the table persists after the sessions ends.}
 
-\item{...}{args to pass to copy_to.}
+\item{...}{args to pass to dplyr::copy_to}
 }
 \description{
-This function is called for it's side-effects of writing a local data.frame to SQL.
+Writes a data.frame to SQL.
 It is essentially a wrapper around dplyr::copy_to with some messages.
 The messages log the time the table starts being written, finishes, and how long it took.
+}
+\details{
+If timestamp TRUE, "schema.table" becomes something like
+"schema.table_yyyymmdd_hhmmss"
 }
 \examples{
 \dontrun{

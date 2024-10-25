@@ -24,6 +24,7 @@ Imports:
     readr,
     rlang,
     rvest,
+    stringi,
     stringr,
     withr
 Suggests: 
