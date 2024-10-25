@@ -2,6 +2,7 @@
 
 export(as_yyyymmdd_hhmmss)
 export(connect_nfu)
+export(read_sql)
 export(scrape_aadf)
 export(scrape_road_safety_data)
 export(write_sql)
