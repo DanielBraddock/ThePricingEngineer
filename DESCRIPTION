@@ -13,9 +13,10 @@ Description: For interacting with NFU SQL servers,
     but initially designed for the Loss Cost Modelling (LCM) team.
 License: MIT + file LICENSE
 Imports: 
-    cli,
     DBI,
+    dbplyr,
     dplyr,
+    duckdb,
     glue,
     httr2,
     lifecycle,
@@ -24,9 +25,10 @@ Imports:
     readr,
     rlang,
     rvest,
+    stats,
     stringi,
     stringr,
-    withr
+    utils
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3

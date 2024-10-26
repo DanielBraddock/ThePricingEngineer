@@ -11,7 +11,7 @@
 #'
 #' @examples \dontrun{table_name(conn, Id)}
 table_name <- function(Id, conn = connect_nfu(), full_name = TRUE) {
-  table_name <- if (full_name) {
+  table_name <- if (!"duckdb_connection" %in% class(conn) & full_name) {
     stringr::str_glue("{conn@info$sourcename}.{conn@info$dbname}.{Id@name[[1]]}.{Id@name[[2]]}")
   } else {
     stringr::str_glue("{Id@name[[1]]}.{Id@name[[2]]}")

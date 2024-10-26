@@ -14,7 +14,7 @@
 #' @param dsn The Data Source Name. A character scalar. 
 #' @param server The server name. A character scalar. 
 #' @param database The database name. A character scalar. 
-#' @param ... 
+#' @param ... Arguments passed on to [DBI::dbConnect()]
 #'
 #' @return The output of dbConnect: I expect the class "Microsoft SQL Server"
 #' @export
@@ -28,12 +28,16 @@ connect_nfu <- function(dsn = "UWPSQL06"
                         , server = dsn
                         , database = "Sandbox"
                         , ...) {
-  conn <- DBI::dbConnect(
-    drv = odbc::odbc()
-    , dsn = dsn
-    , server = server
-    , database = database
-    , ... = ...
+  conn <- tryCatch(
+    expr = DBI::dbConnect(
+      drv = odbc::odbc()
+      , dsn = dsn
+      , server = server
+      , database = database
+      , ... = ...
+    )
+    , error = function(e) duckdb::dbConnect(duckdb::duckdb())
   )
+  
   return(conn)
 }

@@ -45,7 +45,7 @@
 #' 
 #' # alternatively
 #' conn <- connect_nfu()
-#' df <- conn |> read_sql("information_schema.tables")
+#' df <- read_sql("information_schema.tables", conn = conn)
 #' 
 #' \dontrun{
 #' # read a SQL table from a different server
@@ -53,6 +53,7 @@
 #' df <- conn |> read_sql("information_schema.tables")
 #' }
 read_sql <- function(name, conn = connect_nfu(), ...) {
-  lazy_df <- conn |> dplyr::tbl(I(name), ... = ...)
+  if (!"duckdb_connection" %in% class(conn)) name <- I(name)
+  lazy_df <- conn |> dplyr::tbl(name, ... = ...)
   return(lazy_df)
 }

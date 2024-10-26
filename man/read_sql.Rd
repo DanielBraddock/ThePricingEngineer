@@ -52,7 +52,7 @@ df <- read_sql("information_schema.tables")
 
 # alternatively
 conn <- connect_nfu()
-df <- conn |> read_sql("information_schema.tables")
+df <- read_sql("information_schema.tables", conn = conn)
 
 \dontrun{
 # read a SQL table from a different server
