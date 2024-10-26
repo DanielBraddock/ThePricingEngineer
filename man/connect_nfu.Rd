@@ -13,7 +13,7 @@ connect_nfu(dsn = "UWPSQL06", server = dsn, database = "Sandbox", ...)
 
 \item{database}{The database name. A character scalar.}
 
-\item{...}{}
+\item{...}{Arguments passed on to \code{\link[DBI:dbConnect]{DBI::dbConnect()}}}
 }
 \value{
 The output of dbConnect: I expect the class "Microsoft SQL Server"

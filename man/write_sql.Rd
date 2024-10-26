@@ -7,7 +7,7 @@
 write_sql(
   df,
   name,
-  to_conn = connect_nfu(),
+  conn = connect_nfu(),
   time_stamp = FALSE,
   overwrite = TRUE,
   temporary = FALSE,
@@ -19,7 +19,7 @@ write_sql(
 
 \item{name}{table to write in the format "my_schema.my_table" (if time_stamp = TRUE, suffix added, see details)}
 
-\item{to_conn}{a remote data source, eg SQL server + database created from DBI::dbConnect. Calls connect_nfu() by default.}
+\item{conn}{a remote data source, eg SQL server + database created from DBI::dbConnect. Calls connect_nfu() by default.}
 
 \item{time_stamp}{defaults to FALSE, creating a datetime stamp suffix for your table.}
 
@@ -35,12 +35,22 @@ It is essentially a wrapper around dplyr::copy_to with some messages.
 The messages log the time the table starts being written, finishes, and how long it took.
 }
 \details{
+The name can include as many dots as you like.
+On the work database it expects at least one dot.
+In this case, everything before the first dot is taken as the schema.
+And everything else is taken as the table.
+Otherwise, the number of dots >= 0.
+If there are zero dots, the name given is repeated as "the schema".
+\emph{ie} "test1" will be saved as "test1.test1".
+Though this is pretty meaningless.
+It's just a little workaround.
+
 If timestamp TRUE, "schema.table" becomes something like
 "schema.table_yyyymmdd_hhmmss"
 }
 \examples{
 \dontrun{
 df |> write_sql("this_schema", "this_table")
-df |> write_sql("this_schema", "this_table", to_conn = conn)
+df |> write_sql("this_schema", "this_table", conn = conn)
 }
 }
