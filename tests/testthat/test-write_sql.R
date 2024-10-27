@@ -29,17 +29,18 @@ test_that("test write_sql works with time_stamp = TRUE", {
     expect_no_error(df |> write_sql(schema_table_name, conn = conn, time_stamp = TRUE))
     table_search <- 
       read_sql("information_schema.tables", conn = conn) |> 
-      dplyr::filter(table_schema == "main", table_name |> stringr::str_detect(schema_table_name)) |> 
-      as.data.frame()
+      as.data.frame() |> 
+      dplyr::filter(table_schema == "main", table_name |> stringr::str_detect(schema_table_name))
     schema_table_name_with_stamp <- table_search |> dplyr::pull(table_name)
     DBI::dbRemoveTable(conn, Id("main", schema_table_name_with_stamp))
   } else {
     expect_no_error(df |> write_sql(schema_table_name, time_stamp = TRUE))
     table_search <- read_sql("information_schema.tables") |> 
-      dplyr::filter(TABLE_SCHEMA == "Test", TABLE_NAME |> stringr::str_detect(table_name)) |> 
-      as.data.frame()
+      dplyr::filter(TABLE_SCHEMA == "Test") |> 
+      as.data.frame() |> 
+      dplyr::filter(TABLE_NAME |> stringr::str_detect(table_name))
     table_name_with_stamp <- table_search |> dplyr::pull(TABLE_NAME)
-    DBI::dbRemoveTable(connect_nfu(), Id("Test", table_name))
+    DBI::dbRemoveTable(connect_nfu(), Id("Test", table_name_with_stamp))
   }
   expect_true(nrow(table_search) > 0)
 })
