@@ -22,6 +22,7 @@
 #' @importFrom rvest html_attr
 #' @importFrom rvest html_nodes
 #' @importFrom rvest read_html
+#' @importFrom sf st_as_sf
 #' @importFrom stats time
 #' @importFrom stringi stri_rand_strings
 #' @importFrom stringr str_detect
