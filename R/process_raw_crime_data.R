@@ -8,9 +8,9 @@
 #' @export
 #'
 #' @examples
-#' \doontrun{
-#' process_raw_crime_data()
-#' process_raw_crime_data("20220923")
+#' \dontrun{
+#' process_raw_crime_data() |> head()
+#' process_raw_crime_data("20220923") |> head()
 #' }
 process_raw_crime_data <- function(version_crime = NULL, conn = connect_nfu()) {
   
@@ -19,8 +19,8 @@ process_raw_crime_data <- function(version_crime = NULL, conn = connect_nfu()) {
   raw_crime_data <- read_sql(paste0("Postcodes_Arc207912.Postcode_ExternalData_raw_Crime", version_crime_suffix))
   
   crime_data <- raw_crime_data
-  crime_data <- crime_data |> filter(!is.na(.data[["longitude"]]) & !is.na(.data[["latitude"]]))
-  crime_data <- crime_data |> summarise(crime_count = n(), .by = c("longitude", "latitude", "crime_type"))
+  crime_data <- crime_data |> dplyr::filter(!is.na(.data[["longitude"]]) & !is.na(.data[["latitude"]]))
+  crime_data <- crime_data |> dplyr::summarise(crime_count = dplyr::n(), .by = c("longitude", "latitude", "crime_type"))
   
   return(crime_data)
 }

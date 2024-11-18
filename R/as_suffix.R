@@ -1,15 +1,18 @@
 
 #' Convert a string into a suffix
 #' 
+#' @description 
 #' Generally, this simply means add a "_" to the beginning of your string. 
 #' But it's main purpose is to use inside other functions, 
 #' specifically taking function args as input, which might be NULL (default)
 #' and as such we want to return a dummy suffix of "".
-#' This means that instead of building a function called like:
+#' 
+#' @details
+#' It means that instead of calling a function with args like this:
 #' 
 #' * pull_data(version = "_22")
 #' 
-#' I can build a function that's called like:
+#' I can call a function with args like this:
 #' 
 #' * pull_data(version = "22")
 #' 
@@ -25,10 +28,12 @@
 #' @return A string
 #'
 #' @examples
+#' \dontrun{
 #' as_suffix(NULL)
 #' as_suffix("22")
 #' as_suffix(22)
 #' as_suffix(NULL, "_Master")
+#' }
 as_suffix <- function(x, default = "") {
   stopifnot(is.null(x) | is.character(x) | is.numeric(x))
   if (is.numeric(x)) x <- as.character(x)

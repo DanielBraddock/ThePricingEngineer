@@ -2,8 +2,10 @@ Package: ThePricingEngineer
 Title: Preparing Data for Analysis and Modelling
 Version: 0.0.0.9000
 Authors@R: 
-    person("Daniel", "Braddock", , "daniel_braddock@nfumutual.co.uk", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+    person(given = "Daniel"
+    , family = "Braddock"
+    , email = "daniel_braddock@nfumutual.co.uk"
+    , role = c("aut", "cre"))
 Description: For interacting with NFU SQL servers, 
     Data Engineering, 
     Feature Engineering, 

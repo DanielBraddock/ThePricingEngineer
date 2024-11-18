@@ -6,11 +6,14 @@
 #' @import rlang
 #' @importFrom DBI dbRemoveTable
 #' @importFrom DBI Id
+#' @importFrom dplyr collect
 #' @importFrom dplyr copy_to
 #' @importFrom dplyr filter
 #' @importFrom dplyr mutate
+#' @importFrom dplyr n
 #' @importFrom dplyr pull
 #' @importFrom dplyr rename_with
+#' @importFrom dplyr summarise
 #' @importFrom duckdb duckdb
 #' @importFrom glue glue
 #' @importFrom httr2 req_perform

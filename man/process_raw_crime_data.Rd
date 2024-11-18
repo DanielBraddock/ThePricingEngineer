@@ -19,8 +19,8 @@ lazy tibble
 Process raw crime data and left join onto postcode data (OSPCode)
 }
 \examples{
-\doontrun{
-process_raw_crime_data()
-process_raw_crime_data("20220923")
+\dontrun{
+process_raw_crime_data() |> head()
+process_raw_crime_data("20220923") |> head()
 }
 }

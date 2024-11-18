@@ -18,6 +18,6 @@ st_as_sf_27700_safe <- function(df, x, y) {
   df_sf <- df_sf |> filter(!is.na(.data[[y]]))
   df_sf <- df_sf |> filter(.data[[x]] != "NULL")
   df_sf <- df_sf |> filter(.data[[y]] != "NULL")
-  df_sf <- df_sf |> st_as_sf(coords = c(x, y), crs = 27700)
+  df_sf <- df_sf |> sf::st_as_sf(coords = c(x, y), crs = 27700)
   return(df_sf)
 }

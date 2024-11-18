@@ -17,7 +17,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Daniel Braddock \email{daniel_braddock@nfumutual.co.uk} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})
+\strong{Maintainer}: Daniel Braddock \email{daniel_braddock@nfumutual.co.uk}
 
 }
 \keyword{internal}
